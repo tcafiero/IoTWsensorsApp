@@ -1,7 +1,7 @@
 {
-  "name": "Ruuvi Data Logger Manager",
-  "short_name": "RuuviDLM",
-  "description": "This app helps you manage Ruuvi Data Logger.",
+  "name": "IoThingsWare Sensor Monitor",
+  "short_name": "IoTWsensors",
+  "description": "This app is for IoThingsWare Sensor monitoring.",
   "icons": [{
       "src": "/assets/img/Cloud512.png",
       "sizes": "512x512",
