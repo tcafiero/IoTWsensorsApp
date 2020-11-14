@@ -1,7 +1,7 @@
 <script>
 	// Create a client instance
 	var wsbroker = "m21.cloudmqtt.com";  //mqtt websocket enabled broker
-	var wsport = 22605 // port for above
+	var wsport = 32605 // port for above
 	var client = new Paho.MQTT.Client(wsbroker, wsport, "myclientid_" + parseInt(Math.random() * 100, 10));
 	
 	// set callback handlers
