@@ -10,8 +10,8 @@
 	var options = {
 	timeout: 3,
 	onSuccess: onConnect,
-	userName : "air-heritage",
-	password : "new-age",
+	userName : "tester",
+	password : "tester",
 	useSSL: true,
 	onFailure: doFail
 }
@@ -23,8 +23,8 @@ client.connect(options);
 function onConnect() {
 	// Once a connection has been made, make a subscription and send a message.
 	console.log("onConnect");
-	//client.subscribe("/AirHeritage/"+ServerName+"/#");
-	client.subscribe("AirHeritage/PAR");
+	// client.subscribe("/AirHeritage/"+ServerName+"/#");
+	client.subscribe("GreenhouseKenia");
 }
 
 function doFail(e){
@@ -41,13 +41,14 @@ function onConnectionLost(responseObject) {
 // called when a message arrives
 function onMessageArrived(message) {
 	console.log("onMessageArrived:"+message.payloadString);
+	const obj = JSON.parse(message.payloadString);
 	if(cnt == 0) {
 		Plotly.plot('chart',[{
-			y:[Number(message.payloadString)],
+			y:[obj.PPFD],
 			type:'line'
 		}]);					
 		} else {
-		Plotly.extendTraces('chart',{ y:[[Number(message.payloadString)]]}, [0]);
+		Plotly.extendTraces('chart',{ y:[[obj.PPFD]]}, [0]);
 	}
 	cnt++;
 	if(cnt > 30) {
@@ -58,10 +59,8 @@ function onMessageArrived(message) {
 		});
 	}
 }	
-
 			
 var cnt = 0;
-
 
 </script>
 

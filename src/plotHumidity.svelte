@@ -22,8 +22,8 @@ client.connect(options);
 // called when the client connects
 function onConnect() {
 	// Once a connection has been made, make a subscription and send a message.
-	console.log("onConnect");
-	//client.subscribe("/AirHeritage/"+ServerName+"/#");
+	console.log("onConnectiii");
+	// client.subscribe("/AirHeritage/"+ServerName+"/#");
 	client.subscribe("GreenhouseKenia");
 }
 
