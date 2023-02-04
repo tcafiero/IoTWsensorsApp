@@ -1,5 +1,6 @@
 <script>
 	// Create a client instance
+	import {version} from './stores';
 	var wsbroker = "wondrous-lifeguard.cloudmqtt.com";  //mqtt websocket enabled broker
 	var wsport = 443 // port for above
 	var client = new Paho.MQTT.Client(wsbroker, wsport, "myclientid_" + parseInt(Math.random() * 100, 10));
@@ -67,7 +68,8 @@ var cnt = 0;
 </script>
 
 <section id="plotTemperature" class="visible">
-<h1>Temperature</h1>
+<h1>Sensor Monitoring {$version}</h1>
+<h2>Temperature [°C]</h2>
 <div id="TEMPchart"></div>
 </section>
 

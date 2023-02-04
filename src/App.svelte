@@ -14,10 +14,13 @@ import {bottomMenu} from './stores';
 import {id} from './stores';
 import {battery} from './stores';
 import {connection} from './stores';
+import {version} from './stores';
+
 $state="PlotPAR";
 $connection=undefined;
 $id="Not connected";
 $battery="unknown";
+$version="v2.0";
 
 $bottomMenu = [
 {description: "Light", icon: "icon ion-ios-exit", function: function () {

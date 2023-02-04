@@ -1,4 +1,5 @@
 <script>
+	import {version} from './stores';
 	// Create a client instance
 	var wsbroker = "wondrous-lifeguard.cloudmqtt.com";  //mqtt websocket enabled broker
 	var wsport = 443 // port for above
@@ -65,6 +66,7 @@ var cnt = 0;
 </script>
 
 <section id="PlotSection" class="visible">
-<h1>PPFD</h1>
+<h1>Sensor Monitoring {$version}</h1>
+<h2>Light [PPFD]</h2>
 <div id="PARchart"></div>
 </section>
