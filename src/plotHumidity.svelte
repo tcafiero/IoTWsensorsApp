@@ -43,16 +43,16 @@ function onMessageArrived(message) {
 	console.log("onMessageArrived:"+message.payloadString);
 	const obj = JSON.parse(message.payloadString);
 	if(cnt == 0) {
-		Plotly.plot('chart',[{
+		Plotly.plot('RHchart',[{
 			y:[obj.BME280_RH],
 			type:'line'
 		}]);					
 		} else {
-		Plotly.extendTraces('chart',{ y:[[obj.BME280_RH]]}, [0]);
+		Plotly.extendTraces('RHchart',{ y:[[obj.BME280_RH]]}, [0]);
 	}
 	cnt++;
 	if(cnt > 30) {
-		Plotly.relayout('chart',{
+		Plotly.relayout('RHchart',{
 			xaxis: {
 				range: [cnt-30,cnt]
 			}
@@ -67,6 +67,6 @@ var cnt = 0;
 </script>
 
 <section id="PlotSection" class="visible">
-<h1>Humidity</h1>
-<div id="chart"></div>
+<h1>RH</h1>
+<div id="RHchart"></div>
 </section>

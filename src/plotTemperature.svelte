@@ -43,16 +43,16 @@ function onMessageArrived(message) {
 	console.log("onMessageArrived:"+message.payloadString);
 	const obj = JSON.parse(message.payloadString);
 	if(cnt == 0) {
-		Plotly.plot('chart',[{
+		Plotly.plot('TEMPchart',[{
 			y:[obj.BME280_Temperature],
 			type:'line'
 		}]);					
 		} else {
-		Plotly.extendTraces('chart',{ y:[[obj.BME280_Temperature]]}, [0]);
+		Plotly.extendTraces('TEMPchart',{ y:[[obj.BME280_Temperature]]}, [0]);
 	}
 	cnt++;
 	if(cnt > 30) {
-		Plotly.relayout('chart',{
+		Plotly.relayout('TEMPchart',{
 			xaxis: {
 				range: [cnt-30,cnt]
 			}
@@ -68,6 +68,6 @@ var cnt = 0;
 
 <section id="plotTemperature" class="visible">
 <h1>Temperature</h1>
-<div id="chart"></div>
+<div id="TEMPchart"></div>
 </section>
 

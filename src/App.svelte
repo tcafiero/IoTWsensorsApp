@@ -26,7 +26,7 @@ $bottomMenu = [
 {description: "Temperature", icon: "icon ion-ios-exit", function: function () {
 	$state="PlotTemperature";
 	}},
-{description: "Humidity", icon: "icon ion-ios-exit", function: function () {
+{description: "RH", icon: "icon ion-ios-exit", function: function () {
 	$state="PlotHumidity";
 	}}
 ];

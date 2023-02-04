@@ -43,16 +43,16 @@ function onMessageArrived(message) {
 	console.log("onMessageArrived:"+message.payloadString);
 	const obj = JSON.parse(message.payloadString);
 	if(cnt == 0) {
-		Plotly.plot('chart',[{
+		Plotly.plot('PARchart',[{
 			y:[obj.PPFD],
 			type:'line'
 		}]);					
 		} else {
-		Plotly.extendTraces('chart',{ y:[[obj.PPFD]]}, [0]);
+		Plotly.extendTraces('PARchart',{ y:[[obj.PPFD]]}, [0]);
 	}
 	cnt++;
 	if(cnt > 30) {
-		Plotly.relayout('chart',{
+		Plotly.relayout('PARchart',{
 			xaxis: {
 				range: [cnt-30,cnt]
 			}
@@ -65,6 +65,6 @@ var cnt = 0;
 </script>
 
 <section id="PlotSection" class="visible">
-<h1>PAR</h1>
-<div id="chart"></div>
+<h1>PPFD</h1>
+<div id="PARchart"></div>
 </section>
