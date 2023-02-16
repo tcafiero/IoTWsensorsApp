@@ -25,7 +25,7 @@ function onConnect() {
 	// Once a connection has been made, make a subscription and send a message.
 	console.log("onConnect");
 	//client.subscribe("/AirHeritage/"+ServerName+"/#");
-	client.subscribe("GreenhouseKenia");
+	client.subscribe("sensorLab");
 }
 
 function doFail(e){

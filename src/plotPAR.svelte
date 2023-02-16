@@ -8,24 +8,25 @@
 	// set callback handlers
 	client.onConnectionLost = onConnectionLost;
 	client.onMessageArrived = onMessageArrived;
-	var options = {
+	var options1 = {
 	timeout: 3,
 	onSuccess: onConnect,
-	userName : "tester",
-	password : "tester",
+	userName : "air-heritage",
+	password : "new-age",
 	useSSL: true,
 	onFailure: doFail
 }
 
 // connect the client
-client.connect(options);
+client.connect(options1);
 
 // called when the client connects
 function onConnect() {
 	// Once a connection has been made, make a subscription and send a message.
 	console.log("onConnect");
 	// client.subscribe("/AirHeritage/"+ServerName+"/#");
-	client.subscribe("GreenhouseKenia");
+	client.subscribe("sensorLab");
+	Plotly.plot('PARchart', data);
 }
 
 function doFail(e){
@@ -38,30 +39,60 @@ function onConnectionLost(responseObject) {
 		console.log("onConnectionLost:"+responseObject.errorMessage);
 	}
 }
+			
+var cnt = 0;
 
+
+var value;
+
+var time = new Date();
+
+var data = [{
+  x: [time], 
+  y: [],
+  mode: 'lines',
+  line: {
+	color: '#80CAF6',
+	shape: 'spline',
+	width: 6
+	},
+  type: 'scatter'	
+}]
+
+
+var cnt = 0;
 // called when a message arrives
 function onMessageArrived(message) {
 	console.log("onMessageArrived:"+message.payloadString);
 	const obj = JSON.parse(message.payloadString);
-	if(cnt == 0) {
-		Plotly.plot('PARchart',[{
-			y:[obj.PPFD],
-			type:'line'
-		}]);					
-		} else {
-		Plotly.extendTraces('PARchart',{ y:[[obj.PPFD]]}, [0]);
-	}
-	cnt++;
-	if(cnt > 30) {
-		Plotly.relayout('PARchart',{
-			xaxis: {
-				range: [cnt-30,cnt]
-			}
-		});
-	}
+	value = obj.Si1151_PPFD;
 }	
-			
-var cnt = 0;
+
+var interval = setInterval(function() {
+  
+  var time = new Date();
+  
+  var update = {
+  x:  [[time]],
+  y: [[value]]
+  }
+  
+  var olderTime = time.setMinutes(time.getMinutes() - 1);
+  var futureTime = time.setMinutes(time.getMinutes() + 1);
+  
+  var minuteView = {
+        xaxis: {
+          type: 'date',
+          range: [olderTime,futureTime]
+        }
+      };
+  
+  Plotly.relayout('PARchart', minuteView);
+  Plotly.extendTraces('PARchart', update, [0])
+  
+}, 250);
+
+
 
 </script>
 
