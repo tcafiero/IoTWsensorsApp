@@ -28,6 +28,7 @@ function onConnect() {
 	// client.subscribe("/AirHeritage/"+ServerName+"/#");
 	client.subscribe("sensorLab");
 	Plotly.plot('PARchart', data);
+	Plotly.newPlot('PARchart', data, layout);
 }
 
 function doFail(e){
@@ -48,8 +49,18 @@ var value;
 
 var time = new Date();
 
-var data = [{
+var layout = {
   autosize: true,
+  margin: {
+    l: 10,
+    r: 10,
+    b: 10,
+    t: 10,
+    pad: 0
+  },
+};
+
+var data = [{
   x: [time], 
   y: [],
   mode: 'lines',
@@ -90,6 +101,7 @@ var interval = setInterval(function() {
       };
   
 	if ($state === 'PlotPAR') {
+	
   Plotly.relayout('PARchart', minuteView);
   Plotly.extendTraces('PARchart', update, [0])
 	}
