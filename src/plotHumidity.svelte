@@ -28,6 +28,7 @@ function onConnect() {
 	// client.subscribe("/AirHeritage/"+ServerName+"/#");
 	client.subscribe("sensorLab");
 	Plotly.plot('RHchart', data);
+	Plotly.newPlot('RHchart', data, layout);
 }
 
 function doFail(e){
@@ -45,6 +46,19 @@ var value;
 
 var time = new Date();
 
+var layout = {
+  autosize: false,
+  width: 250,
+  height: 200,  margin: {
+    l: 30,
+    r: 10,
+    b: 50,
+    t: 50,
+    pad: 0
+  },
+};
+
+
 var data = [{
   x: [time], 
   y: [],
@@ -52,7 +66,7 @@ var data = [{
   line: {
 	color: '#80CAF6',
 	shape: 'spline',
-	width: 6
+	width: 2
 	},
   type: 'scatter'	
 }]
@@ -96,7 +110,7 @@ var interval = setInterval(function() {
 </script>
 
 <section id="PlotSection" class="visible">
-<h1>Sensor Monitoring {$version}</h1>
-<h2>RH %</h2>
+<h3>Sensor Monitoring {$version}</h3>
+<h4>RH %</h4>
 <div id="RHchart"></div>
 </section>

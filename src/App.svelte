@@ -20,7 +20,7 @@ $state="PlotPAR";
 $connection=undefined;
 $id="Not connected";
 $battery="unknown";
-$version="v2.0";
+$version="v3.0";
 
 $bottomMenu = [
 {description: "Light", icon: "icon ion-ios-exit", function: function () {

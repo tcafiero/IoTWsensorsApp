@@ -28,6 +28,7 @@ function onConnect() {
 	//client.subscribe("/AirHeritage/"+ServerName+"/#");
 	client.subscribe("sensorLab");
 	Plotly.plot('TEMPchart', data);
+	Plotly.newPlot('TEMPchart', data, layout);
 }
 
 function doFail(e){
@@ -46,6 +47,17 @@ var value;
 
 var time = new Date();
 
+var layout = {
+  autosize: false,
+  width: 250,
+  height: 200,  margin: {
+    l: 30,
+    r: 10,
+    b: 50,
+    t: 50,
+    pad: 0
+  },
+};
 var data = [{
   x: [time], 
   y: [],
@@ -53,7 +65,7 @@ var data = [{
   line: {
 	color: '#80CAF6',
 	shape: 'spline',
-	width: 6
+	width: 2
 	},
   type: 'scatter'	
 }]
@@ -97,8 +109,8 @@ var interval = setInterval(function() {
 </script>
 
 <section id="plotTemperature" class="visible">
-<h1>Sensor Monitoring {$version}</h1>
-<h2>Temperature [°C]</h2>
+<h3>Sensor Monitoring {$version}</h3>
+<h4>Temperature [°C]</h4>
 <div id="TEMPchart"></div>
 </section>
 
