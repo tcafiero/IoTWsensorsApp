@@ -49,13 +49,14 @@ var value;
 var time = new Date();
 
 var data = [{
+  autosize: true,
   x: [time], 
   y: [],
   mode: 'lines',
   line: {
 	color: '#80CAF6',
 	shape: 'spline',
-	width: 6
+	width: 2
 	},
   type: 'scatter'	
 }]
