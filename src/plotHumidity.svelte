@@ -1,6 +1,7 @@
 <script>
 	// Create a client instance
 	import {version} from './stores';
+	import {state} from './stores';
 	var wsbroker = "wondrous-lifeguard.cloudmqtt.com";  //mqtt websocket enabled broker
 	var wsport = 443 // port for above
 	var client = new Paho.MQTT.Client(wsbroker, wsport, "myclientid_" + parseInt(Math.random() * 100, 10));
@@ -84,8 +85,10 @@ var interval = setInterval(function() {
         }
       };
   
+	if ($state === 'PlotHumidity') {
   Plotly.relayout('RHchart', minuteView);
   Plotly.extendTraces('RHchart', update, [0])
+  }
   
   //if(cnt === 400) clearInterval(interval);
 }, 250);

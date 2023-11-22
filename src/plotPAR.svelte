@@ -1,5 +1,6 @@
 <script>
 	import {version} from './stores';
+	import {state} from './stores';
 	// Create a client instance
 	var wsbroker = "wondrous-lifeguard.cloudmqtt.com";  //mqtt websocket enabled broker
 	var wsport = 443 // port for above
@@ -65,7 +66,7 @@ var cnt = 0;
 function onMessageArrived(message) {
 	console.log("onMessageArrived:"+message.payloadString);
 	const obj = JSON.parse(message.payloadString);
-	value = obj.Si1151_PPFD;
+	value = obj.ePPFD;
 }	
 
 var interval = setInterval(function() {
@@ -87,9 +88,11 @@ var interval = setInterval(function() {
         }
       };
   
+	if ($state === 'PlotPAR') {
   Plotly.relayout('PARchart', minuteView);
   Plotly.extendTraces('PARchart', update, [0])
-  
+	}
+ 
 }, 250);
 
 
