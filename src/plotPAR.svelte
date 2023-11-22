@@ -53,10 +53,10 @@ var layout = {
   autosize: false,
   width: 250,
   height: 200,  margin: {
-    l: 50,
+    l: 30,
     r: 10,
     b: 50,
-    t: 30,
+    t: 50,
     pad: 0
   },
 };
@@ -96,7 +96,7 @@ var interval = setInterval(function() {
   
   var minuteView = {
         xaxis: {
-          type: 'date',
+          type: 'hour',
           range: [olderTime,futureTime]
         }
       };
@@ -114,7 +114,7 @@ var interval = setInterval(function() {
 </script>
 
 <section id="PlotSection" class="visible">
-<h1>Sensor Monitoring {$version}</h1>
-<h2>Light [PPFD]</h2>
+<h3>Sensor Monitoring {$version}</h3>
+<h4>Light [PPFD]</h4>
 <div id="PARchart"></div>
 </section>
