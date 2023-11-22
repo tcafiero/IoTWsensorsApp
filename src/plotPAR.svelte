@@ -50,12 +50,13 @@ var value;
 var time = new Date();
 
 var layout = {
-  autosize: true,
-  margin: {
-    l: 10,
+  autosize: false,
+  width: 250,
+  height: 200,  margin: {
+    l: 50,
     r: 10,
-    b: 10,
-    t: 10,
+    b: 50,
+    t: 30,
     pad: 0
   },
 };
